@@ -15,6 +15,13 @@
   function connect()
   {
       $conn = mysqli_connect("localhost", "root", "", "internshipmanager");
+      
+      if(mysqli_connect_errno())
+      {
+          exit("Failed to connect" . mysqli_connect_error());
+      }
+      
+      return $conn;
   }
 
 

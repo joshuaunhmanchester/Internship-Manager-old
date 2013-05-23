@@ -11,7 +11,6 @@
   * Opens the database connection.
   * @return object $conn that has connection data
   */
-
   function connect()
   {
       $conn = mysqli_connect("localhost", "root", "", "internshipmanager");

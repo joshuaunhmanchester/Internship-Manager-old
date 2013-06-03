@@ -19,15 +19,21 @@
   
   function connect()
   {
-      $conn = mysqli_connect("localhost", "root", "", "internshipmanager");
+      $host = 'localhost';
+      $database = 'internshipmanager';
+      $username = 'root';
+      $password = '';
       
+      $connection = new mysqli($host, $username, $password, $database);
       if(mysqli_connect_errno())
       {
-          exit("Failed to connect" . mysqli_connect_error());
+          printf('Connection failed! <br />');
+          exit();
+          
       }
       
-      return $conn;
+      return $connection;
   }
 
 
-?>
+?>  

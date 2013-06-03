@@ -1,8 +1,107 @@
 body {
-    width: 100%;
     margin: 0;
     padding: 0;
+    background: url('images/gray-flat.png') repeat;
     font-family: Verdana, sans-serif;
     font-size: 12pt;
     color: #666666;
 }
+
+h1 {
+    color: #ff6b6b;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 1px dashed rgba(85, 98, 112, 0.25);
+    padding-bottom: 1em;
+}
+
+h2 {
+    color: #ff6b6b;
+    font-size: 1em;
+}
+
+a {
+    color: #2f5ba4;
+}
+
+.page-wrapper {
+    width: 60em;
+    margin: 2em auto;
+}
+
+.header {
+    background: #fff;
+    padding: 3em;
+    margin: 0;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
+    -moz-box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
+    box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+}
+
+.content {
+    background: #fff;
+    padding: 3em;
+    margin: 1em 0 0 0;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
+    -moz-box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
+    box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
+}
+
+/* FORM STYLES */
+fieldset {
+    margin-top: 1em;
+    border: none;
+    border-top: dotted #808080 1px;
+    padding-top: .5em;
+    position: relative;
+}
+
+legend {
+    background-color: white;
+    color: #ff6b6b;
+    font-size: 1em;
+    padding: 0px .5em;
+    position: absolute;
+    top: -.75em;
+    left: -.25em;
+}
+
+.form-item {
+    margin: 1em 0 0 0;
+}
+
+    .form-item input {
+        background-color: #f0f0f0;
+        border: solid 1px #999;
+        padding: 4px;
+        width: 200px;
+        height: 2.5em;
+    }
+    
+#submitButton {
+    margin: 1em 0 0 0;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    background-color: #2f5ba4;
+    width: 125px;
+    height: 2.5em;
+}
+
+#submitButton:hover {
+    background-color: #7F9ED2;
+}
+
+
+/* STUDENT LISTING */
+
+.student-listing {
+    width: 70%;
+  }

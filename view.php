@@ -102,10 +102,10 @@ function buildForm()
 function getTopListingHTML()
 {
     $topHTML = '
-                <div class="student-listing">
+                <div class="student-listing-table-wrapper">
                     <fieldset>
                         <legend>Student Listing</legend>
-                        <table class="listing-table" cellspacing="12">
+                        <table class="listing-table" cellspacing="0">
                             <tr><th>ID#</th><th>First Name</th><th>Last Name</th><th>Email</th><th></th></tr>';
                 
     return $topHTML;

@@ -4,7 +4,7 @@
 * File: storage.php
 * Author: Joshua Anderson
 * Created: 5/25
-* Modified: 5/25
+* Modified:
 * Descritption: This will be used to handle all the data gathered and inserted into our internshipmanager database
 * 
  * so - how to return results from select (bind_param as well) as array: http://stackoverflow.com/questions/12534137/return-mysqli-query-result-as-an-array-in-php
@@ -55,7 +55,7 @@
        exit();
    }
    
-   
+   // returns an array containing all the student records
    function selectAllInternships()
    {
        $conn = connect();

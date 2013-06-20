@@ -3,7 +3,7 @@
 * File: view.php
 * Author: Joshua Anderson
 * Created: 5/24
-* Modified: 5/24
+* Modified: 6/20
 * Descritption: The view file will handle all the HTML and forms throughout the site
 * */
 
@@ -60,6 +60,8 @@ function welcome()
     return $welcomeStr;
 }
 
+
+// This is used to build the main form to create a student profile
 function buildForm()
 {
     $form = '
@@ -99,6 +101,8 @@ function buildForm()
     return $form;
 }
 
+
+// used to start the table listing all the current student profile records
 function getTopListingHTML()
 {
     $topHTML = '
@@ -111,6 +115,7 @@ function getTopListingHTML()
     return $topHTML;
 }
 
+// just finishes the bottom of the listing table
 function getBottomListingHTML()
 {
     $botHTML = '
@@ -121,6 +126,8 @@ function getBottomListingHTML()
     return $botHTML;
 }
 
+// takes in 4 parameters that have been validated from the form filled out
+// creates a variable (record) that will contain the html row for the listint table
 function showOneListing($student_id, $first_name, $last_name, $email)
 {
     $record = '
@@ -135,6 +142,8 @@ function showOneListing($student_id, $first_name, $last_name, $email)
     return $record;
 }
 
+// this combines all the HTML of the listint table
+// takes in a paramter (listing) which is the entire table HTML containing all the records
 function showMasterInternshipList($listing)
 {
     $results = getTopListingHTML() . $listing . getBottomListingHTML();
@@ -142,6 +151,8 @@ function showMasterInternshipList($listing)
     return $results;
 }
 
+// util function called to display an error
+// takes in the array of errors and loops through, displaying each iteration
 function showFormError($errorsArray)
 {
     $formErrors = "";

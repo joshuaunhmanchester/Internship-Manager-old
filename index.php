@@ -1,11 +1,9 @@
 <?php
 ob_start(); 
 require_once("inc/util.php");
-require_once("control.php");
-require_once("storage.php");
-require_once("view.php");
+require_once("Controllers/MainControl.php");
 
 // calling the main funciton that runs the entire web app.
-main();
+MainControl::main();
 
 ob_flush();

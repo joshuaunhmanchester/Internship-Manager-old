@@ -1,32 +1,8 @@
 <?php
 
-/*
-* File: storage.php
-* Author: Joshua Anderson
-* Created: 5/25
-* Modified:
-* Descritption: This will be used to handle all the data gathered and inserted into our internshipmanager database
-* 
- * so - how to return results from select (bind_param as well) as array: http://stackoverflow.com/questions/12534137/return-mysqli-query-result-as-an-array-in-php
- * 
- * */
-   
-   require_once("inc/util.php");
-   require_once("control.php");
-   require_once("view.php");
-   
-   // This will be esentially creating the "position".  
-   // It will insert the data in our database
-   /*
-    * This will be essentially creating the "position".
-    * It will insert all the form data in the database
-    * PHASE 1 NOTES: This will only be inserting the user's data (5/30)
-    * @param string $lname
-    * @param string $fname
-    * @param string $unh_email
-    */
-    
-   function createPosition($lname, $fname, $unh_email)
+class StudentModel 
+{
+   static function createPosition($lname, $fname, $unh_email)
    {
        $conn = connect();
        $inserted_user_id = null;
@@ -57,7 +33,7 @@
    }
    
    // returns an array containing all the student records
-   function selectAllInternships()
+   static function selectAllInternships()
    {
        $conn = connect();
        $internshipsList = array();
@@ -73,5 +49,7 @@
        $stmt->close();
        return $internshipsList;
    }
-   
+}
+
+
 ?>

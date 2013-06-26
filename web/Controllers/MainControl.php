@@ -29,41 +29,6 @@
            echo MainView::getBottomHTML();
        }
        
-       // createMain() will control the create/index.php page (form page)
-       static function createMain()
-       {
-           echo MainView::getTopHTML();
-           
-           if(isset($_POST['submitButton']))
-           {
-               processFormData();
-           }
-           
-           echo MainView::buildForm();
-           echo MainView::getBottomHTML();
-           exit();
-       }
-       
-       // This will receive the data from $_POST and will collect all the input data from the form.
-       // Will then send to createPosition() funciton to inset the information in the database.  
-       static function processFormData()
-       {
-           $hasErrors = array();
-           $fname = validateInput($_POST['fname'], "First Name", $hasErrors);
-           $lname = validateInput($_POST['lname'], "Last Name", $hasErrors);
-           $email = validateInput($_POST['email'], "UNH Email", $hasErrors);
-           
-           if(count($hasErrors) == 0)
-           {
-               StudentModel::createStudent($lname, $fname, $email);
-           }
-           else 
-           {
-               MainControl::showFormError($hasErrors);
-           }
-       }
-       
-       
        // this will return an array of all the listings in a table row (html)
        static function getInternshipListing()
        {
@@ -78,19 +43,7 @@
            
            return $results;
        }
-       
-       // basic validation - checking for empty inputs
-       static function validateInput($data, $label, $hasErrors)
-       {
-           if(strlen($data) == 0)
-           {
-               $hasErrors[] = $label . " is a required field";
-           }
-           else 
-           {
-               return $data; 
-           }
-       }
+
    }
 
 ?>

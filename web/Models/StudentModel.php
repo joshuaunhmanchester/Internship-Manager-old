@@ -2,7 +2,7 @@
 
 class StudentModel 
 {
-   static function createPosition($lname, $fname, $unh_email)
+   static function createStudent($lname, $fname, $unh_email)
    {
        $conn = connect();
        $inserted_user_id = null;

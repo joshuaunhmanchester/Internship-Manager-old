@@ -34,6 +34,19 @@
       
       return $connection;
   }
+  
+  // basic validation - checking for empty inputs
+   function validateInput($data, $label, $hasErrors)
+   {
+       if(strlen($data) == 0)
+       {
+           $hasErrors[] = $label . " is a required field";
+       }
+       else 
+       {
+           return $data; 
+       }
+   }
 
 
 ?>  

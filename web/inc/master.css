@@ -2,7 +2,8 @@ body {
     margin: 0;
     padding: 0;
     background: url('images/gray-flat.png') repeat;
-    font-family: Verdana, sans-serif;
+    /*font-family: Verdana, sans-serif;*/
+    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
     font-size: 12pt;
     color: #666666;
 }
@@ -64,7 +65,7 @@ fieldset {
 legend {
     background-color: white;
     color: #ff6b6b;
-    font-size: 1em;
+    font-size: 15pt;
     padding: 0px .5em;
     position: absolute;
     top: -.75em;
@@ -215,3 +216,76 @@ legend {
     background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
 }
 
+/* Accordion */
+
+.ac-container{
+    width: 700px;
+    margin: 10px auto 30px auto;
+    text-align: left;
+}
+
+.ac-container label.ac-label{
+    padding: 5px 20px;
+    position: relative;
+    z-index: 20;
+    display: block;
+    height: 30px;
+    cursor: pointer;
+    color: #777;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+    line-height: 33px;
+    font-size: 19px;
+    background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 1%, #eaeaea 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea));
+    background: -webkit-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+    background: -o-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+    background: -ms-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+    background: linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 );
+    box-shadow: 
+        0px 0px 0px 1px rgba(155,155,155,0.3), 
+        1px 0px 0px 0px rgba(255,255,255,0.9) inset, 
+        0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.ac-container label.ac-label:hover{
+    background: #fff;
+}
+
+.ac-container label.ac-label.active{
+    background: #2f5ba4;
+    color: white;
+}
+
+.ac-container .ac-content {
+    display: none;
+}
+
+.ac-container.form-item {
+    margin: 1em 0 0 0;
+}
+
+.ac-container.form-item input {
+    background-color: #f0f0f0;
+    border: solid 1px #999;
+    padding: 4px;
+    width: 200px;
+    height: 2.5em;
+}
+
+.ac-container#submitButton {
+    margin: 1em 0 0 0;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    background-color: #2f5ba4;
+    width: 125px;
+    height: 2.5em;
+}
+
+.ac-container#submitButton:hover {
+    background-color: #7F9ED2;
+}

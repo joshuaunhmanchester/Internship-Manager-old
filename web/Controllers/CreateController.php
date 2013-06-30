@@ -17,7 +17,7 @@
                CreateController::processFormData();    
            }
            
-           echo FormView::buildForm();
+           echo FormView::getAccordionForm();
            echo MainView::getBottomHTML();
            
            exit();

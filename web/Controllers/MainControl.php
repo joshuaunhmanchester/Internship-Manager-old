@@ -21,7 +21,6 @@
        static function main()
        {
            echo MainView::getTopHTML();
-           echo MainView::welcome();
            
            $internshipListing = MainControl::getInternshipListing();
            echo MainView::showMasterInternshipList($internshipListing);

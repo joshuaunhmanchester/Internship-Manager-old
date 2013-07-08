@@ -3,17 +3,27 @@ body {
     padding: 0;
     background: url('images/gray-flat.png') repeat;
     /*font-family: Verdana, sans-serif;*/
-    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
-    font-size: 12pt;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 18px;
     color: #666666;
 }
 
 h1 {
     color: #ff6b6b;
-    font-size: 1.5em;
+    /*color: #313437;*/
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
     text-align: center;
-    border-bottom: 1px dashed rgba(85, 98, 112, 0.25);
-    padding-bottom: 1em;
+}
+
+h1:after {
+    background-color: #c1c7cd;
+    content: "";
+    display: block;
+    height: 1px;
+    margin: 25px auto 0 auto;
+    width: 200px;
 }
 
 h2 {
@@ -27,16 +37,22 @@ a {
 
 .page-wrapper {
     width: 60em;
-    margin: 2em auto;
+    margin: 1em auto;
 }
 
 .header {
     background: #fff;
-    padding: 3em;
+    padding: 1em;
     margin: 0;
     -webkit-box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
     -moz-box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
     box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
+}
+
+#menu {
+    margin: 0 auto;
+    text-align: center;
+    width: 250px;
 }
 
 .logo {
@@ -46,7 +62,7 @@ a {
 
 .content {
     background: #fff;
-    padding: 3em;
+    padding: 1em;
     margin: 1em 0 0 0;
     -webkit-box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
     -moz-box-shadow: 0 1px 4px 0 rgba(85,98,112,0.5);
@@ -63,9 +79,11 @@ fieldset {
 }
 
 legend {
+    font-family: 'Josefin Slab', serif;
     background-color: white;
-    color: #ff6b6b;
-    font-size: 15pt;
+    color: #313437;
+    font-size: 36px;
+    font-weight: 100;
     padding: 0px .5em;
     position: absolute;
     top: -.75em;
@@ -216,7 +234,7 @@ legend {
     background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
 }
 
-/* Accordion */
+/* Accordion Form */
 
 .ac-container{
     width: 700px;
@@ -253,13 +271,9 @@ legend {
     background: #fff;
 }
 
-.ac-container label.ac-label.active{
-    background: #2f5ba4;
-    color: white;
-}
-
 .ac-container .ac-content {
     display: none;
+    padding: 15px;
 }
 
 .ac-container.form-item {

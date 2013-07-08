@@ -26,14 +26,24 @@
        static function processFormData()
        {
            $hasErrors = array();
+           $studentID = "";
+           $companyID = "";
+           $supervisorID = "";
            
            $fname = validateInput($_POST['fname'], "First Name", $hasErrors);
            $lname = validateInput($_POST['lname'], "Last Name", $hasErrors);
            $email = validateInput($_POST['email'], "UNH Email", $hasErrors);
            
+           //$cName = validateInput($_POST['cName'], "Company Name", $hasErrors);
+           //$cWebsite = validateInput($_POST['$cWebsite'], "Website URL", $hasErrors);
+           //$cCity = validateInput($_POST['$cCity'], "City", $hasErrors);
+           //$cState = validateInput($_POST['cState'], "State", $hasErrors);
+           
            if(count($hasErrors) == 0)
            {
-               StudentModel::createStudent($lname, $fname, $email);
+               $studentID = StudentModel::createStudent($lname, $fname, $email);
+               echo $studentID;
+               //$companyID = CompanyModel::createCompany($cName, $cWebsite, $cCity, $cState);
            }
            else 
            {

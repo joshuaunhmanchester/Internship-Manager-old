@@ -22,6 +22,8 @@ class MainView
             <head>
                 <title>'. Site_Title . '</title>
                 <link href="/intern/inc/master.css" media="all" rel="stylesheet" type="text/css" />
+                <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" type="text/css">
+                <link href="http://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet" type="text/css">
                 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
                 <script type="text/javascript" src="/intern/inc/js/functions.js"></script>
             </head>
@@ -29,8 +31,10 @@ class MainView
                 <div class="page-wrapper">
                     <div class="header">
                         <a href="/intern"><img class="logo" src="/intern/inc/images/unh-logo.jpg" alt="UNH Manchester" title="UNH Manchester" /></a>
-                        <h1>UNH Manchester CompTech Internship Manager</h1>
-                        <a href="create" title="Create Internship Position">Create</a>      
+                        <h1>CompTech Internship Manager</h1>
+                        <div id="menu">
+                            <a href="/intern/create" title="Create Internship Position">Create</a>
+                        </div>      
                     </div>
                     <div class="content">';
     

@@ -82,13 +82,13 @@ class FormView
                                 <div class="ac-content">
                                     <div class="form-item">
                                         <label for="custom-company">Custom Company</label>
-                                        <input type="radio" class="c-type" name="company-select" id="custom-company" value='.$_POST['cTypeCustom'].' />
+                                        <input type="radio" class="c-type" name="company-select" id="custom-company" value="custom" />
                                     </div>
                                     <div class="form-item">
                                         <label for="exist-company">Existing Company</label>
-                                        <input type="radio" class="c-type" name="company-select" id="exist-company" value='.$_POST['cTypeExist'].' />
+                                        <input type="radio" class="c-type" name="company-select" id="exist-company" value="existing" />
                                     </div>
-                                    
+                                    <!-- Add Drop Down with existing companies here -->
                                     <div id="custom-company-form">
                                         <div class="form-item">
                                             <div class="label">

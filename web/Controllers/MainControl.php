@@ -21,26 +21,8 @@
        static function main()
        {
            echo MainView::getTopHTML();
-           
-           $internshipListing = MainControl::getInternshipListing();
-           echo MainView::showMasterInternshipList($internshipListing);
-           
+           echo MainView::welcome();
            echo MainView::getBottomHTML();
-       }
-       
-       // this will return an array of all the listings in a table row (html)
-       static function getInternshipListing()
-       {
-           $internshipMasterList = array();
-           $results = "";
-           
-           $internshipMasterList = StudentModel::selectAllInternships();
-           foreach($internshipMasterList as $record)
-           {
-               $results = $results . MainView::showOneListing($record['student_id'], $record['first_name'], $record['last_name'], $record['email']);
-           }
-           
-           return $results;
        }
 
    }

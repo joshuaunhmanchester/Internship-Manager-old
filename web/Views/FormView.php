@@ -81,35 +81,46 @@ class FormView
                                 <label class="ac-label">Company Information</label>
                                 <div class="ac-content">
                                     <div class="form-item">
-                                        <div class="label">
-                                            <label for="cName">Company Name</label>
-                                        </div>
-                                        <div class="input">
-                                            <input type="text" id="cName" name="cName" value="'.$_POST['cName'].'" />
-                                        </div>
+                                        <label for="custom-company">Custom Company</label>
+                                        <input type="radio" class="c-type" name="company-select" id="custom-company" value='.$_POST['cTypeCustom'].' />
                                     </div>
                                     <div class="form-item">
-                                        <div class="label">
-                                            <label for="cWebsite">Website URL</label>
-                                        </div>
-                                        <div class="input">
-                                            <input type="text" id="cWebsite" name="cWebsite" value="'.$_POST['cWebsite'].'"/>
-                                        </div>
+                                        <label for="exist-company">Existing Company</label>
+                                        <input type="radio" class="c-type" name="company-select" id="exist-company" value='.$_POST['cTypeExist'].' />
                                     </div>
-                                    <div class="form-item">
-                                        <div class="label">
-                                            <label for="cCity">City</label>
+                                    
+                                    <div id="custom-company-form">
+                                        <div class="form-item">
+                                            <div class="label">
+                                                <label for="cName">Company Name</label>
+                                            </div>
+                                            <div class="input">
+                                                <input type="text" id="cName" name="cName" value="'.$_POST['cName'].'" />
+                                            </div>
                                         </div>
-                                        <div class="input">
-                                            <input type="text" id="cCity" name="cCity" value="'.$_POST['cCity'].'"/>
+                                        <div class="form-item">
+                                            <div class="label">
+                                                <label for="cWebsite">Website URL</label>
+                                            </div>
+                                            <div class="input">
+                                                <input type="text" id="cWebsite" name="cWebsite" value="'.$_POST['cWebsite'].'"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-item">
-                                        <div class="label">
-                                            <label for="cState">State</label>
+                                        <div class="form-item">
+                                            <div class="label">
+                                                <label for="cCity">City</label>
+                                            </div>
+                                            <div class="input">
+                                                <input type="text" id="cCity" name="cCity" value="'.$_POST['cCity'].'"/>
+                                            </div>
                                         </div>
-                                        <div class="input">
-                                            <input type="text" id="cState" name="cState" value="'.$_POST['cState'].'"/>
+                                        <div class="form-item">
+                                            <div class="label">
+                                                <label for="cState">State</label>
+                                            </div>
+                                            <div class="input">
+                                                <input type="text" id="cState" name="cState" value="'.$_POST['cState'].'"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

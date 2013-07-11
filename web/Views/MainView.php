@@ -20,23 +20,44 @@ class MainView
         $topHTML = '
         <html>
             <head>
-                <title>'. Site_Title . '</title>
-                <link href="/intern/inc/master.css" media="all" rel="stylesheet" type="text/css" />
-                <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" type="text/css">
-                <link href="http://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet" type="text/css">
-                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-                <script type="text/javascript" src="/intern/inc/js/functions.js"></script>
+               <title>'. Site_Title . '</title>
+               <link href="/intern/inc/master.css" media="all" rel="stylesheet" type="text/css" />
+               
+               <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" type="text/css">
+               <link href="http://fonts.googleapis.com/css?family=Oxygen:300,400" rel="stylesheet" type="text/css">
+               <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" type="text/css">
+               <link href="http://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet" type="text/css">
+               
+               <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+               <script type="text/javascript" src="/intern/inc/js/functions.js"></script>
             </head>
             <body>
-                <div class="page-wrapper">
-                    <div class="header">
-                        <a href="/intern"><img class="logo" src="/intern/inc/images/unh-logo.jpg" alt="UNH Manchester" title="UNH Manchester" /></a>
-                        <h1>CompTech Internship Manager</h1>
-                        <div id="menu">
-                            <a href="/intern/create" title="Create Internship Position">Create</a>
-                        </div>      
-                    </div>
-                    <div class="content">';
+               <div id="site">
+                   <div id="left-nav">
+                       <div id="logo">
+                           <img src="/intern/inc/images/UNHMlogoline_blue.jpg" alt="UNH Manchester" />
+                       </div>
+                       <div id="nav">
+                           <ul>
+                               <li class="active">
+                                   <a href="/intern"><p class="active">home</p></a>
+                               </li>
+                               <li>
+                                   <a href="/intern/create"><p>create</p></a>
+                               </li>
+                               <li>
+                                   <a href="/intern/student.php"><p>students</p></a>
+                               </li>
+                               <li>
+                                   <a href="/intern/company.php"><p>companies</p></a>
+                               </li>
+                               <li>
+                                   <a href="/intern/supervisors.php"><p>supervisors</p></a>
+                               </li>
+                           </ul>
+                       </div>
+                   </div>
+                   <div id="content">';
     
         return $topHTML;
     }
@@ -90,31 +111,6 @@ class MainView
                     </div>';
         
         return $botHTML;
-    }
-    
-    // takes in 4 parameters that have been validated from the form filled out
-    // creates a variable (record) that will contain the html row for the listint table
-    static function showOneListing($student_id, $first_name, $last_name, $email)
-    {
-        $record = '
-                            <tr>
-                                <td>' . $student_id . '</td>
-                                <td>' . $first_name . '</td>
-                                <td>' . $last_name . '</td>
-                                <td>' . $email . '</td>
-                                <td><a href="edit.php?s_id='.$student_id.'">Edit</a></td>
-                            </tr>';
-                            
-        return $record;
-    }
-    
-    // this combines all the HTML of the listint table
-    // takes in a paramter (listing) which is the entire table HTML containing all the records
-    static function showMasterInternshipList($listing)
-    {
-        $results = MainView::getTopListingHTML() . $listing . MainView::getBottomListingHTML();
-        
-        return $results;
     }
     
     // util function called to display an error

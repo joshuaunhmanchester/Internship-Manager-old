@@ -45,6 +45,7 @@ class MainView
                                <li>
                                    <a href="/intern/create"><p>create</p></a>
                                </li>
+                               
                                <li>
                                    <a href="/intern/student.php"><p>students</p></a>
                                </li>

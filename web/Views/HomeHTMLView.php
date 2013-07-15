@@ -8,7 +8,7 @@
 * */
 
 
-class MainView
+class HomeHTMLView
 {
     // This function will used to produce the top half of the HTML for the site. 
     // It includes the opening HTML tag, the header which contains the title of each page (use-case), the master style sheet
@@ -90,29 +90,6 @@ class MainView
         return $welcomeStr;
     }
     
-    // used to start the table listing all the current student profile records
-    static function getTopListingHTML()
-    {
-        $topHTML = '
-                    <div class="student-listing-table-wrapper">
-                        <fieldset>
-                            <legend>Student Listing</legend>
-                            <table class="listing-table" cellspacing="0">
-                                <tr><th>ID#</th><th>First Name</th><th>Last Name</th><th>Email</th><th></th></tr>';
-                    
-        return $topHTML;
-    }
-    
-    // just finishes the bottom of the listing table
-    static function getBottomListingHTML()
-    {
-        $botHTML = '
-                            </table>
-                        </fieldset>
-                    </div>';
-        
-        return $botHTML;
-    }
     
     // util function called to display an error
     // takes in the array of errors and loops through, displaying each iteration

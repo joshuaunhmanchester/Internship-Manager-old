@@ -31,24 +31,6 @@ class CompanyModel
        
        return $inserted_user_id = $conn->insert_id;
    }
-   
-   // returns an array containing all the student records
-   static function selectAllInternships()
-   {
-       $conn = connect();
-       $internshipsList = array();
-       
-       $query = "SELECT * FROM student ORDER BY last_name asc";
-       $stmt = $conn->query($query);
-       
-       while($row = $stmt->fetch_assoc())
-       {
-           $internshipsList[] = $row;
-       }
-       
-       $stmt->close();
-       return $internshipsList;
-   }
 }
 
 ?>

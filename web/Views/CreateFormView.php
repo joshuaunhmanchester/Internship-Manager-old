@@ -1,8 +1,8 @@
 <?php
 
 
-class FormView 
-{
+    class CreateFormView 
+    {
     // This is used to build the main form to create a student profile
     static function buildForm() {
     

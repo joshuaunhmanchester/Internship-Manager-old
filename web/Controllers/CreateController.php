@@ -1,24 +1,24 @@
 <?php
 
    require_once("../inc/util.php");
-   require_once("../Views/MainView.php");
-   require_once("../Views/StudentView.php");
-   require_once("../Views/FormView.php");
+   require_once("../Views/HomeHTMLView.php");
+   require_once("../Views/StudentListView.php");
+   require_once("../Views/CreateFormView.php");
    require_once("../Models/StudentModel.php");
    
    class CreateController 
    {
        static function getMasterForm()
        {
-           echo MainView::getTopHTML();
+           echo HomeHTMLView::getTopHTML();
            
            if(isset($_POST['submitButton']))
            {
                CreateController::processFormData();    
            }
            
-           echo FormView::getAccordionForm();
-           echo MainView::getBottomHTML();
+           echo CreateFormView::getAccordionForm();
+           echo HomeHTMLView::getBottomHTML();
            
            exit();
        }
@@ -53,7 +53,7 @@
            }
            else 
            {
-               MainView::showFormError($hasErrors);  
+               HomeHTMLView::showFormError($hasErrors);  
            }
        }
    }

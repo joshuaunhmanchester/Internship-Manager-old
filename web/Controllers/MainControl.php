@@ -9,8 +9,9 @@
 * */
    
    require_once("inc/util.php");
-   require_once("Views/MainView.php");
-   require_once("Views/StudentView.php");
+   require_once("Views/CreateFormView.php");
+   require_once("Views/StudentListView.php");
+   require_once("Views/HomeHTMLView.php");
    require_once("Models/StudentModel.php");
    require_once("StudentController.php");
    
@@ -20,11 +21,10 @@
        // The main list of positions will be here as well
        static function main()
        {
-           echo MainView::getTopHTML();
-           echo MainView::welcome();
-           echo MainView::getBottomHTML();
+           echo HomeHTMLView::getTopHTML();
+           echo HomeHTMLView::welcome();
+           echo HomeHTMLView::getBottomHTML();
        }
-
    }
 
 ?>

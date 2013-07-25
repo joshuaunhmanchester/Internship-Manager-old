@@ -17,7 +17,10 @@
                CreateController::processFormData();    
            }
            
-           echo CreateFormView::getAccordionForm();
+           //echo CreateFormView::getAccordionForm();
+           echo CreateFormView::getStudentForm();
+           echo CreateFormView::getBottomFormTag(); 
+            
            echo HomeHTMLView::getBottomHTML();
            
            exit();

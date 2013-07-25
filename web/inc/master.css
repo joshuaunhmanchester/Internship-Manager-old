@@ -179,6 +179,90 @@ a {
 }
 
 /* FORM STYLES */
+
+.form-wrapper {
+    
+}
+    .form-wrapper p {
+        margin: 0;
+    }
+
+    .form-wrapper .label {
+        font-family: 'Libre Baskerville', Georgia, serif;
+        color: #084D8B;
+        font-size: 40px;
+        text-align: left;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+    
+    .form-wrapper .form-wrapper-item {
+        background-color: lightgrey;
+        width: 600px;
+        padding: 15px;
+        margin-top: 2em;
+    }
+    
+    .form-wrapper .form-wrapper-item .label {
+        font-family: 'Oxygen', sans-serif;
+        color: #084D8B;
+        font-size: 30px;
+        text-align: left;
+        font-weight: 300;
+        text-transform: uppercase;
+        margin-bottom: .75em;
+    }
+    
+    .form-wrapper .form-wrapper-item .input-label {
+        font-family: 'Oxygen', sans-serif;
+        color: #084D8B;
+        font-size: 23px;
+        text-align: left;
+        font-weight: 300;
+        text-transform: uppercase;
+        margin-bottom: .25em;
+    }
+    
+    .form-wrapper .form-wrapper-item .options {
+        background-color: darkgrey;
+        padding-left: 15px;
+        padding-right: 15px;
+        color: white;
+        font-size: 23px;
+        cursor: pointer;
+    }
+    
+    .form-wrapper .form-wrapper-item .options span:nth-child(2){
+        margin-right: 60px;
+        margin-left: 60px;  
+    }
+    
+    .form-wrapper .input-search {
+        display: none;
+    }
+    
+    .form-wrapper .input-search input {
+        height: 35px;
+        width: 350px;
+        margin-bottom: 5px;
+        background-color: #f0f0f0;
+        border: solid 1px #999;
+        font-size: 23px;
+        padding: 10px;
+    }
+    
+    #btn-student-search {
+
+    }
+
+#studentForm {
+    display: none;
+}
+
+#generatedStudentList {
+    display: none;
+}
+
 fieldset {
     margin-top: 1em;
     border: none;
@@ -223,10 +307,40 @@ legend {
     background-color: #2f5ba4;
     width: 125px;
     height: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 #submitButton:hover {
     background-color: #7F9ED2;
+}
+
+.continue {
+    display: none;
+    margin: 1em 0 0 .75em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    background-color: #2f5ba4;
+    width: 125px;
+    height: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.continue:hover {
+    background-color: #7F9ED2;
+}
+
+
+#btn-student-search img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 6px;
+    cursor: pointer;
 }
 
 /* STUDENT LISTING */
@@ -236,7 +350,12 @@ legend {
     margin-top: 35px;
 }
 
-.student-listing-table-wrapper table a:link {
+.create-student-listing-table-wrapper {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table a:link {
     color: #666;
     font-weight: bold;
     text-decoration: none;
@@ -248,12 +367,12 @@ legend {
     text-decoration: none;
 }
 
-.student-listing-table-wrapper table a:active, .student-listing-table-wrapper table a:hover {
+.student-listing-table-wrapper table a:active, .create-student-listing-table-wrapper table a:hover {
     color: #bd5a35;
     text-decoration: underline;
 }
 
-.student-listing-table-wrapper table {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table {
     font-family: Arial, Helvetica, sans-serif;
     color: #666;
     font-size: 12px;
@@ -270,8 +389,8 @@ legend {
     width: 95%;
 }
 
-.student-listing-table-wrapper table th {
-    padding: 21px 25px 22px 25px;
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table th {
+    padding: 10px;
     border-top: 1px solid #fafafa;
     border-bottom: 1px solid #e0e0e0;
     background: #ededed;
@@ -279,35 +398,35 @@ legend {
     background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
 }
 
-.student-listing-table-wrapper table th:first-child {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table th:first-child {
     text-align: left;
     padding-left: 20px;
 }
 
-.student-listing-table-wrapper table tr:first-child th:first-child {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table tr:first-child th:first-child {
     -moz-border-radius-topleft: 3px;
     -webkit-border-top-left-radius: 3px;
     border-top-left-radius: 3px;
 }
 
-.student-listing-table-wrapper table tr:first-child th:last-child {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table tr:first-child th:last-child {
     -moz-border-radius-topright: 3px;
     -webkit-border-top-right-radius: 3px;
     border-top-right-radius: 3px;
 }
 
-.student-listing-table-wrapper table tr {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table tr {
     text-align: center;
     padding-left: 20px;
 }
 
-.student-listing-table-wrapper table td:first-child {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table td:first-child {
     text-align: left;
     padding-left: 20px;
     border-left: 0;
 }
 
-.student-listing-table-wrapper table td {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table td {
     padding: 18px;
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #e0e0e0;
@@ -317,32 +436,36 @@ legend {
     background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
 }
 
-.student-listing-table-wrapper table tr.even td {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table tr.even td {
     background: #f6f6f6;
     background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
     background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
 }
 
-.student-listing-table-wrapper table tr:last-child td {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table tr:last-child td {
     border-bottom: 0;
 }
 
-.student-listing-table-wrapper table tr:last-child td:first-child {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table tr:last-child td:first-child {
     -moz-border-radius-bottomleft: 3px;
     -webkit-border-bottom-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
 
-.student-listing-table-wrapper table tr:last-child td:last-child {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table tr:last-child td:last-child {
     -moz-border-radius-bottomright: 3px;
     -webkit-border-bottom-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
 
-.student-listing-table-wrapper table tr:hover td {
+.student-listing-table-wrapper, .create-student-listing-table-wrapper table tr:hover td {
     background: #f2f2f2;
     background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
     background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
+}
+
+.select-student {
+    cursor: pointer;
 }
 
 /* Accordion Form */

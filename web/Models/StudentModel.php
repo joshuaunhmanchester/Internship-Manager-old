@@ -1,5 +1,17 @@
 <?php
 
+require_once("../Controllers/StudentController.php");
+
+if(isset($_POST['action']) && !empty($_POST['action'])) {
+    $action = $_POST['action'];
+    
+    if($action == 'AjaxGenerateStudentList') {
+        $internshipListing = StudentController::getInternshipListing(true);
+        echo StudentListView::showMasterStudentListForCreate($internshipListing);
+    }
+}
+
+
 class StudentModel 
 {
     // before you insert, check the unique constraints of the table: unh_email has to be unique.

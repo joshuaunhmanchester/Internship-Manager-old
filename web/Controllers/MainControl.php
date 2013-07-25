@@ -8,11 +8,11 @@
 * assembled, based on what the user is passing through the super global, $_POST
 * */
    
-   require_once("inc/util.php");
-   require_once("Views/CreateFormView.php");
-   require_once("Views/StudentListView.php");
-   require_once("Views/HomeHTMLView.php");
-   require_once("Models/StudentModel.php");
+   require_once("../inc/util.php");
+   require_once("../Views/CreateFormView.php");
+   require_once("../Views/StudentListView.php");
+   require_once("../Views/HomeHTMLView.php");
+   require_once("../Models/StudentModel.php");
    require_once("StudentController.php");
    
    class MainControl

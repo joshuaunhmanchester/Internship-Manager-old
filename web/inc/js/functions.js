@@ -51,7 +51,19 @@ $(function() {
    });
    
    $('#btn-student-search').on('click', function(e) {
-      alert('y');
+      var query = $('#student-search').val();
+      $.ajax({
+         url: '/intern/Models/StudentModel.php',
+         data: { action: 'StudentSearch', q: query },
+         type: 'POST',
+         beforeSend: function() {
+            $('#generatedStudentList').show();
+            $('#generatedStudentList').html("<img src='/intern/inc/images/ajax-loader.gif' />");
+         },
+         success: function(data) {
+            $('#generatedStudentList').html(data);
+         }
+      });
    });
   
 });

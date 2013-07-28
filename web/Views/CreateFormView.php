@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="input-search">
                                         <input type="text" id="student-search" name="student-search" placeholder="UNH Email or Last Name"/>
-                                        <span id="btn-student-search" class="search"><img src="/intern//inc/images/small_Search.png" /></span>
+                                        <span id="btn-student-search" class="search"><img src="/intern/inc/images/small_Search.png" /></span>
                                     </div>
                                     <div class="student-list" id="generatedStudentList">
                                     </div>

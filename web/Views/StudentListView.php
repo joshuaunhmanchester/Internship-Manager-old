@@ -32,7 +32,7 @@
         // this combines all the HTML of the listint table
         // takes in a paramter (listing) which is the entire table HTML containing all the records
         static function showMasterInternshipList($listing) {
-            return studentListView::getTopListingHTML() . $listing . StudentListView::getBottomListingHTML();
+            return studentListView::getTopListingHTML(false) . $listing . StudentListView::getBottomListingHTML();
         }
         
         static function showMasterStudentListForCreate($listing) {

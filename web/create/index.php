@@ -6,6 +6,7 @@ require_once("../Controllers/MainControl.php");
 require_once("../Controllers/CreateController.php");
 require_once("../Views/CreateFormView.php");
 require_once("../Views/StudentListView.php");
+require_once("../Views/SupervisorListView.php");
 require_once("../Views/HomeHTMLView.php");
 require_once("../Models/StudentModel.php");
 require_once("../Models/CompanyModel.php");

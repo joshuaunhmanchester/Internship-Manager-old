@@ -3,50 +3,51 @@
     if(isset($_POST['action']) && !empty($_POST['action'])) {
         $action = $_POST['action'];
         
-        if($action == 'AjaxGenerateCompanyList') {
+        if($action == 'AjaxGenerateSupervisorList') {
             include('../inc/util.php');
-            include('../Controllers/CompanyController.php');
+            include('../Controllers/SupervisorController.php');
+            include('../Views/SupervisorListView.php');
             $conn = connect();
-            $internshipListing = CompanyController::getCompanyListing(true, $conn);
-            echo CompanyListView::showMasterCompanyListForCreate($internshipListing);
+            $supervisorListing = SupervisorController::getSupervisorListing(true, $conn);
+            echo SupervisorListView::showMasterSupervisorListForCreate($supervisorListing);
         }
         
-        if($action == 'CompanySearch') {
+        if($action == 'SupervisorSearch') {
             include('../inc/util.php');
-            include('../Views/CompanyListView.php');
+            include('../Views/SupervisorListView.php');
             $pdo = getPDO();
             $query = $_POST['q'];
             $listing = "";
-            $results = CompanyModel::searchForCompany($query, $pdo);
+            $results = SupervisorModel::searchForSupervisor($query, $pdo);
             foreach($results as $record) {
-                $listing = $listing . CompanyListView::showOneListingForCreate($record['company_id'], $record['name'], $record['website_url'], $record['city'], $record['state']);
+                $listing = $listing . SupervisorListView::showOneListingForCreate($record['supervisor_id'], $record['first_name'], $record['last_name'], $record['email'], $record['phone']);
             }
             
-            echo CompanyListView::getTopListingHTML(true) . $listing . CompanyListView::getBottomListingHTML();
+            echo SupervisorListView::getTopListingHTML(true) . $listing . SupervisorListView::getBottomListingHTML();
         }
 
-        if($action == 'CompanyContinue') {
+        if($action == 'SupervisorContinue') {
             include('../Views/CreateFormView.php');
-            echo CreateFormView::getSupervisorForm();
+            echo CreateFormView::getPositionForm();
         }
     }
     
     
-    class CompanyModel  {
+    class SupervisorModel  {
         // before you insert, check the unique constraints of the table: unh_email has to be unique.
         // so first do a select query and select the ID so if there is a result row, return that ID
-        static function createCompany($cName, $cWebURL, $cCity, $cState) {
+        static function createSupervisor($lName, $fName, $email, $phone, $fk_company_id) {
             $conn = connect();
-            $inserted_company_id = null;
+            $inserted_supervisor_id = null;
            
-            $sql = "INSERT INTO company (name, website_url, city, state) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO supervisor (last_name, first_name, email, phone, fk_company_id) VALUES (?, ?, ?, ?, ?)";
         
             if(!$stmt = $conn->prepare($sql)) {
                 exit("You have a MySQL syntax error: " . $sql . "<br />
                     Execution failed: " . $stmt->errno . ": " . $stmt->error);
             }
            
-            if(!$stmt->bind_param("ssss", $cName, $cWebURL, $cCity, $cState)) {
+            if(!$stmt->bind_param("ssssi", $lName, $fName, $email, $phone, $fk_company_id)) {
                 exit("Your arguments do not match the table columns.");
             }
            
@@ -57,13 +58,13 @@
             mysqli_close($conn);
             exit();
            
-            return $inserted_company_id = $conn->insert_id;
+            return $inserted_supervisor_id = $conn->insert_id;
         }
     
-        static function searchForCompany($query, $pdo) {
+        static function searchForSupervisor($query, $pdo) {
             $result = array();
             if(!empty($query)) {
-                $sql = "SELECT * FROM company WHERE LOWER(name) LIKE LOWER(?)";
+                $sql = "SELECT * FROM supervisor WHERE LOWER(last_name) LIKE LOWER(?)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(array('%'.$query.'%'));
                 return $stmt->fetchAll();
@@ -73,7 +74,7 @@
             }
         }
        
-        static function checkForCompany($conn, $unh_email) {
+        static function checkForSupervisor($conn, $unh_email) {
             // not being used right now
             $sql = "SELECT student_id FROM student where email=?";
            
@@ -93,21 +94,21 @@
         }
        
         // returns an array containing all the student records
-        static function selectAllCompanies($conn = null) {
+        static function selectAllSupervisors($conn = null) {
             if($conn == null) {
                 $conn = connect();
             }        
                 
-            $companyList = array();
+            $supervisorList = array();
            
-            $sql = "SELECT * FROM company ORDER BY name asc";
+            $sql = "SELECT * FROM supervisor ORDER BY last_name asc";
             $stmt = $conn->query($sql);
            
             while($row = $stmt->fetch_assoc()) {
-                $companyList[] = $row;
+                $supervisorList[] = $row;
             }
             $stmt->close();
-            return $companyList;
+            return $supervisorList;
         }
      }
 

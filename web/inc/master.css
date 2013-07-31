@@ -201,6 +201,7 @@ a {
         width: 600px;
         padding: 15px;
         margin-top: 2em;
+        float: left;
     }
     
     .form-wrapper .form-wrapper-item .label {
@@ -228,7 +229,7 @@ a {
         padding-left: 15px;
         padding-right: 15px;
         color: white;
-        font-size: 23px;
+        font-size: 20px;
         cursor: pointer;
     }
     
@@ -254,12 +255,53 @@ a {
     #btn-student-search {
 
     }
+    
+.current-status-wrapper {
+    background-color: lightcoral;
+    margin-left: 30px;
+    padding: 10px;
+    margin-top: 2em;
+    width: 200px;
+    position: fixed;
+    right: 50px;
+    color: white;
+}
+
+    .current-status-wrapper h2 {
+        color: white;
+        font-weight: normal;
+        border-bottom: 1px solid white;
+    }
+    
+    .current-status-wrapper .step2 {
+        opacity: .75;
+    }
+    
+    .current-status-wrapper .step3 {
+        opacity: .5;
+    }
+    
+    .current-status-wrapper .step4 {
+        opacity: .25;
+    }
 
 #studentForm {
     display: none;
 }
 
+#companyForm {
+    display: none;
+}
+
+#supervisorForm {
+    display: none;
+}
+
 #generatedStudentList {
+    display: none;
+}
+
+#generatedCompanyList {
     display: none;
 }
 
@@ -317,7 +359,7 @@ legend {
 
 .continue {
     display: none;
-    margin: 1em 0 0 .75em;
+    margin: 1em 0 0 1.45em;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -336,6 +378,22 @@ legend {
 
 
 #btn-student-search img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 6px;
+    cursor: pointer;
+}
+
+#btn-company-search img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 6px;
+    cursor: pointer;
+}
+
+#btn-supervisor-search img {
     width: 30px;
     height: 30px;
     position: relative;
@@ -464,7 +522,7 @@ legend {
     background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);
 }
 
-.select-student {
+.select-student, .select-company, .select-supervisor {
     cursor: pointer;
 }
 

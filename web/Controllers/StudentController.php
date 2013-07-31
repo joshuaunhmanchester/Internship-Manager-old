@@ -19,14 +19,14 @@
            $conn = connect();
            echo HomeHTMLView::getTopHTML();
            
-           $internshipListing = StudentController::getInternshipListing(false, $conn);
+           $internshipListing = StudentController::getStudentList(false, $conn);
            echo StudentListView::showMasterInternshipList($internshipListing);
            
            echo HomeHTMLView::getBottomHTML();
        }
        
        // this will return an array of all the listings in a table row (html)
-       static function getInternshipListing($isForCreate, $conn) // could put a parameter in there to see if its for the form or not
+       static function getStudentList($isForCreate, $conn) // could put a parameter in there to see if its for the form or not
        {
            $internshipMasterList = array();
            $results = "";

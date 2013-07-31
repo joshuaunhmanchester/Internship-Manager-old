@@ -7,7 +7,7 @@
             include('../inc/util.php');
             include('../Controllers/StudentController.php');
             $conn = connect();
-            $internshipListing = StudentController::getInternshipListing(true, $conn);
+            $internshipListing = StudentController::getStudentList(true, $conn);
             echo StudentListView::showMasterStudentListForCreate($internshipListing);
         }
         
@@ -23,6 +23,11 @@
             }
             
             echo StudentListView::getTopListingHTML(true) . $listing . StudentListView::getBottomListingHTML();
+        }
+
+        if($action == 'StudentContinue') {
+            include('../Views/CreateFormView.php');
+            echo CreateFormView::getCompanyForm();
         }
     }
     

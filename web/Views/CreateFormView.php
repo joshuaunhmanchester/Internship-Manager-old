@@ -242,9 +242,9 @@
                                         </div>
                                         <div class="form-item">
                                             <div class="input">
-                                                <input type="radio" id="pIsPaidYes" name="pIsPaid" value="'.$_POST['pIsPaidYes'].'"/>
+                                                <input type="radio" class="paidInfo" id="pIsPaidYes" name="pIsPaid" value="'.$_POST['pIsPaidYes'].'"/>
                                                 <label for="pIsPaidYes">Yes</label>
-                                                <input type="radio" id="pIsPaidNo" name="pIsPaid" value="'.$_POST['pIsPaidNo'].'"/>
+                                                <input type="radio" class="paidInfo" id="pIsPaidNo" name="pIsPaid" value="'.$_POST['pIsPaidNo'].'"/>
                                                 <label for="pIsPaidNo">No</label>
                                             </div>
                                         </div>

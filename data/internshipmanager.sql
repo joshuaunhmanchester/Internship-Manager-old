@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 21, 2013 at 02:39 AM
+-- Generation Time: Jul 31, 2013 at 04:39 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -33,12 +33,14 @@ CREATE TABLE IF NOT EXISTS `company` (
   `state` varchar(50) NOT NULL,
   PRIMARY KEY (`company_id`),
   UNIQUE KEY `name` (`name`,`city`,`state`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `company`
 --
 
+INSERT INTO `company` (`company_id`, `name`, `website_url`, `city`, `state`) VALUES
+(1, 'SilverTech Inc.', 'silvertech.com', 'Manchester', 'NH');
 
 -- --------------------------------------------------------
 
@@ -54,6 +56,8 @@ CREATE TABLE IF NOT EXISTS `position` (
   `fk_student_id` int(11) NOT NULL,
   `fk_company_id` int(11) NOT NULL,
   `fk_supervisor_id` int(11) NOT NULL,
+  `is_paid` bit(1) DEFAULT NULL,
+  `est_hours_per_week` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`position_id`),
   UNIQUE KEY `term` (`term`,`year`,`fk_student_id`),
   KEY `fk_student_id` (`fk_student_id`),
@@ -79,14 +83,16 @@ CREATE TABLE IF NOT EXISTS `student` (
   `email` varchar(150) NOT NULL,
   PRIMARY KEY (`student_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`student_id`, `last_name`, `first_name`, `email`) VALUES
-(1, 'Anderson', 'Joshua', 'joshua.anderson@silvertech.com');
+(1, 'Anderson', 'Joshua', 'joshua.anderson@silvertech.com'),
+(2, 'Zappala', 'Jessica', 'jnu45@wildcats.edu'),
+(3, 'Anderson', 'Joe', 'joe.anderson@email.com');
 
 -- --------------------------------------------------------
 
@@ -119,9 +125,9 @@ CREATE TABLE IF NOT EXISTS `supervisor` (
 -- Constraints for table `position`
 --
 ALTER TABLE `position`
-  ADD CONSTRAINT `position_ibfk_3` FOREIGN KEY (`fk_supervisor_id`) REFERENCES `supervisor` (`supervisor_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `position_ibfk_1` FOREIGN KEY (`fk_student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `position_ibfk_2` FOREIGN KEY (`fk_company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `position_ibfk_2` FOREIGN KEY (`fk_company_id`) REFERENCES `company` (`company_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `position_ibfk_3` FOREIGN KEY (`fk_supervisor_id`) REFERENCES `supervisor` (`supervisor_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `supervisor`

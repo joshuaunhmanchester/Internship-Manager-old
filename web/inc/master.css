@@ -305,6 +305,10 @@ a {
     display: none;
 }
 
+.paidInfo {
+    width: auto !important;
+}
+
 fieldset {
     margin-top: 1em;
     border: none;

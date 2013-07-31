@@ -31,6 +31,7 @@ $(function() {
         },
         success: function(data) {
             $('#generatedStudentList').html(data);
+            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
         }
         
         });
@@ -107,6 +108,7 @@ $(function() {
         },
         success: function(data) {
             $('#generatedCompanyList').html(data);
+            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
         }
         
         });
@@ -116,6 +118,7 @@ $(function() {
       $('#generatedCompanyList').slideUp('fast');
       $('#companyForm').slideToggle('slow'); 
       $('#company-continue').slideToggle('fast');
+      $("html, body").animate({ scrollTop: $(document).height() }, 1000);
    }); 
    
    $('form').on('click', '.select-company', function () {
@@ -124,6 +127,7 @@ $(function() {
       $(this).prev('.listing-table tr').not($(this)).css('color', '#666');
       $(this).closest('tr').css('color', 'red');
       $('#company-continue').slideDown('slow');
+      $("html, body").animate({ scrollTop: $(document).height() }, 1000);
    });
    
    $('form').on('click', '#btn-company-search', function () {
@@ -190,6 +194,7 @@ $(function() {
       $('#generatedSupervisorList').slideUp('fast');
       $('#supervisorForm').slideToggle('slow'); 
       $('#supervisor-continue').slideToggle('fast');
+      $("html, body").animate({ scrollTop: $(document).height() }, 1000);
    }); 
    
    $('form').on('click', '.select-supervisor', function () {
@@ -217,7 +222,6 @@ $(function() {
    });
    
    $('form').on('click', '#supervisor-continue', function () {
-       e.preventDefault();
        $('.step1').css('text-decoration', 'line-through');
        $('.step2').css('text-decoration', 'line-through');
        $('.stpe3').css('text-decoration', 'line-through');

@@ -1,68 +1,24 @@
 <?php
-    // Title: Models/StudentModel.php
+    // Title: Models/PositionModel.php
     // Author: Joshua Anderson
-    // Modified Date: 8/3/13
+    // Modified Date: 8/6/13
     // Description: This model handles all the interaction with the database regarding the STUDENT table.  This will 
     // incoorporate the PDOWrapper class when making the calls to insert, update, select, delete student record(s).
 
     require_once('../Classes/PDOWrapper.php');
     
-    if(isset($_POST['action']) && !empty($_POST['action'])) {
-        $action = $_POST['action'];
-        
-        if($action == 'AjaxGenerateStudentList') {
-            include('../inc/util.php');
-            include('../Controllers/StudentController.php');
-            $conn = connect();
-            $internshipListing = StudentController::getStudentList(true, $conn);
-            echo StudentListView::showMasterStudentListForCreate($internshipListing);
-        }
-        
-        if($action == 'StudentSearch') {
-            include('../inc/util.php');
-            include('../Views/StudentListView.php');
-            $query = $_POST['q'];
-            $listing = "";
-            $results = StudentModel::searchForStudent($query);
-            foreach($results as $record) {
-                $listing = $listing . StudentListView::showOneListingForCreate($record['student_id'], $record['first_name'], $record['last_name'], $record['email']);
-            }
-            
-            echo StudentListView::getTopListingHTML(true) . $listing . StudentListView::getBottomListingHTML();
-        }
-
-        if($action == 'StudentContinue') {
-            include('../Views/CreateFormView.php');
-            echo CreateFormView::getCompanyForm();
-        }
-    }
-    
-    
-    class StudentModel 
-    {
+    class PositionModel {
         /*
-         * This function takes in 3 params:
-         * 1. lname = Last Name of Student
-         * 2. fname = First Name of Student
-         * 3. unh_email = Email of Student
          * 
-         * Creates a PDO object, and first checks to see if the student email that was passes already exists, if it does, it 
-         * will return that students' ID - if not, this will create an associative array ($info) that contains the params.
-         * We will then pass that array, along with the PDO object, and which table we want to use.  
-         * 
-         * RETURNS ID of student
         **/
-        static function createStudent($lname, $fname, $unh_email)
-        {
+        static function createPosition($position_title, $term, $year, $is_paid, $est_hours_per_week, $fk_student_id, $fk_company_id, $fk_supervisor_id) {
             $pdo = getPDO();
-            $inserted_user_id = null;
-           
-            if(strlen(StudentModel::checkForStudent($unh_email)) > 0) {
-                return StudentModel::checkForStudent($unh_email);
-            } else {
-                $info = array('last_name' => $lname, 'first_name' => $fname, 'email' => $unh_email);
-                return PDOWrapperModel::insert($pdo, 'student', $info);
-            }
+            $info = array('position_title' => $position_title, 'term' => $term, 
+                          'year' => $year, 'is_paid' => $is_paid,
+                          'est_hours_per_week' => $est_hours_per_week, 'fk_student_id' => $fk_student_id, 
+                          'fk_company_id' => $fk_company_id,
+                          'fk_supervisor_id' => $fk_supervisor_id);
+            return PDOWrapperModel::insert($pdo, 'position', $info);
         }
     
         /*

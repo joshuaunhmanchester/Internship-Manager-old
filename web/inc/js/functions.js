@@ -72,7 +72,7 @@ $(function() {
        e.preventDefault();
        $('.step1').css('text-decoration', 'line-through');
        $('.step2').css('opacity', '1');
-       $('.step3').css('opactiy', '.75');
+       $('.step3').css('opacity', '.75');
        $('.step4').css('opacity', '.5');
        
        $.ajax({ 
@@ -150,7 +150,7 @@ $(function() {
        e.preventDefault();
        $('.step1').css('text-decoration', 'line-through');
        $('.step2').css('text-decoration', 'line-through');
-       $('.step3').css('opactiy', '1');
+       $('.step3').css('opacity', '1');
        $('.step4').css('opacity', '.75');
        
        $.ajax({ 
@@ -224,7 +224,7 @@ $(function() {
    $('form').on('click', '#supervisor-continue', function () {
        $('.step1').css('text-decoration', 'line-through');
        $('.step2').css('text-decoration', 'line-through');
-       $('.stpe3').css('text-decoration', 'line-through');
+       $('.step3').css('text-decoration', 'line-through');
        $('.step4').css('opacity', '1');
        
        $.ajax({ 
@@ -236,7 +236,7 @@ $(function() {
                 $('#position-form-wrapper').append(data);
             }
        });
-       
+       $('#submitButton').show();
        $("html, body").animate({ scrollTop: $(document).height() }, 1000);
    });
   

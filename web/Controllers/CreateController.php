@@ -1,13 +1,13 @@
 <?php
    
-   class CreateController 
-   {
-       static function getMasterForm()
-       {
+   require_once('../Models/CreateModel.php');
+   require_once('../inc/util.php');
+   
+   class CreateController {
+       static function getMasterForm() {
            echo HomeHTMLView::getTopHTML();
            
-           if(isset($_POST['submitButton']))
-           {
+           if(isset($_POST['submitButton'])) {
                CreateController::processFormData();    
            }
            
@@ -20,36 +20,88 @@
            exit();
        }
        
-       static function processFormData()
-       {
+       static function processFormData() {
            $hasErrors = array();
-           $studentID = "";
-           $companyID = "";
-           $supervisorID = "";
+           $createdPositionID;
+           $studentID;
+           $companyID;
+           $supervisorID;
+           $hasStudent = false;
+           $hasCompany = false;
+           $hasSupervisor = false;
            
-           $fname = validateInput($_POST['fname'], "First Name", $hasErrors);
-           $lname = validateInput($_POST['lname'], "Last Name", $hasErrors);
-           $email = validateInput($_POST['email'], "UNH Email", $hasErrors);
+           $fName;
+           $lName;
+           $email;
            
-           $companyType = $_POST['company-select'];
+           $cName;
+           $cURL;
+           $cCity;
+           $cState;
            
-           if($companyType == "existing") {
-               // get the post value of the dropdown list which will contain the $companyID to pass to supervisor
-               // and position functions
+           $sFName;
+           $sLName;
+           $sEmail;
+           $sPhone;
+           
+           $pTitle;
+           $pYear;
+           $pIsPaid;
+           $pEstHours;
+           
+           $studentID = $_POST['selected-student-from-list'];
+           $companyID = $_POST['selected-company-from-list'];
+           $supervisorID = $_POST['selected-supervisor-from-list'];
+           
+           if(empty($studentID)) {
+              $fname = validateInput($_POST['fname'], "First Name", $hasErrors);
+              $lname = validateInput($_POST['lname'], "Last Name", $hasErrors);
+              $email = validateInput($_POST['email'], "UNH Email", $hasErrors);
            } else {
+               $hasStudent = true;
+           }
+           
+           if(empty($companyID)) {
                $cName = validateInput($_POST['cName'], "Company Name", $hasErrors);
-               $cWebsite = validateInput($_POST['$cWebsite'], "Website URL", $hasErrors);
-               $cCity = validateInput($_POST['$cCity'], "City", $hasErrors);
-               $cState = validateInput($_POST['cState'], "State", $hasErrors);
+               $cURL = validateInput($_POST['cWebURL'], "Company Website", $hasErrors);
+               $cCity = validateInput($_POST['cCity'], "Company City", $hasErrors);
+               $cState = validateInput($_POST['cState'], "Company State", $hasErrors);
+           } else {
+               $hasCompany = true;
            }
+           
+           if(empty($supervisorID)) {
+               $sFName = validateInput($_POST['sFName'], "Supervisor First Name", $hasErrors);
+               $sLName = validateInput($_POST['sLName'], "Supervisor Last Name", $hasErrors);
+               $sEmail = validateInput($_POST['sEmail'], "Supervisor Email", $hasErrors);
+               $sPhone = validateInput($_POST['sPhone'], "Supervisor Phone", $hasErrors);
+           } else {
+               $hasSupervisor = true;
+           }
+           
+           $pTitle = validateInput($_POST['pTitle'], "Position Title", $hasErrors);
+           $pTerm = validateInput($_POST['pTerm'], "Position Term", $hasErrors);
+           $pYear = validateInput($_POST['pYear'], "Position Year", $hasErrors);
+           $pIsPaid = validateInput($_POST['pIsPaid'], "Is Paid", $hasErrors);
+           $pEstHours = validateInput($_POST['pEstHours'], "Estimated Hours", $hasErrors);
+           
 
-           if(count($hasErrors) == 0)
-           {
-               $studentID = StudentModel::createStudent($lname, $fname, $email);
-               $companyID = CompanyModel::createCompany($cName, $cWebsite, $cCity, $cState);
-           }
-           else 
-           {
+           if(count($hasErrors) == 0) {
+               if(!$hasStudent) {
+                   $studentID = StudentModel::createStudent($lname, $fname, $email);
+               }
+               if(!$hasCompany) {
+                   $companyID = CompanyModel::createCompany($cName, $cURL, $cCity, $cState);
+               }
+               if(!$hasSupervisor) {
+                   $supervisorID = SupervisorModel::createSupervisor($sFName, $sLName, $sEmail, $sPhone, $companyID);
+               }
+               
+               if(!empty($studentID) && !empty($companyID) && !empty($supervisorID)) {
+                   $createdPositionID = PositionModel::createPosition($pTitle, $pTerm, $pYear, $pIsPaid, $pEstHours, $studentID, $companyID, $supervisorID);  
+                   header('Location: /intern/view_position.php?id='.$createdPositionID);
+               }
+           } else {
                HomeHTMLView::showFormError($hasErrors);  
            }
        }

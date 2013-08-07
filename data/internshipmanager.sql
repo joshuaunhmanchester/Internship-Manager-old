@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 31, 2013 at 04:39 PM
+-- Generation Time: Aug 07, 2013 at 04:28 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -33,14 +33,33 @@ CREATE TABLE IF NOT EXISTS `company` (
   `state` varchar(50) NOT NULL,
   PRIMARY KEY (`company_id`),
   UNIQUE KEY `name` (`name`,`city`,`state`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`company_id`, `name`, `website_url`, `city`, `state`) VALUES
-(1, 'SilverTech Inc.', 'silvertech.com', 'Manchester', 'NH');
+(1, 'SilverTech Inc.', 'silvertech.com', 'Manchester', 'NH'),
+(2, 'Ektron', 'ektron.com', 'Nashua', 'NH'),
+(3, 'Dyn Inc.', 'dyn.com', 'Manchester', 'NH');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `getsingleposition`
+--
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `internshipmanager`.`getsingleposition` AS select `s`.`first_name` AS `student_first_name`,`s`.`last_name` AS `student_last_name`,`s`.`email` AS `student_email`,`c`.`name` AS `company_name`,`c`.`website_url` AS `website_url`,`c`.`city` AS `company_city`,`c`.`state` AS `company_state`,`sv`.`first_name` AS `supervisor_first_name`,`sv`.`last_name` AS `supervisor_last_name`,`sv`.`email` AS `supervisor_email`,`sv`.`phone` AS `supervisor_phone`,`p`.`position_id` AS `position_id`,`p`.`position_title` AS `position_title`,`p`.`term` AS `term`,`p`.`year` AS `year`,`p`.`is_paid` AS `is_paid`,`p`.`est_hours_per_week` AS `est_hours_per_week` from (((`internshipmanager`.`position` `p` join `internshipmanager`.`student` `s` on((`p`.`fk_student_id` = `s`.`student_id`))) join `internshipmanager`.`company` `c` on((`p`.`fk_company_id` = `c`.`company_id`))) join `internshipmanager`.`supervisor` `sv` on((`p`.`fk_supervisor_id` = `sv`.`supervisor_id`)));
+
+--
+-- Dumping data for table `getsingleposition`
+--
+
+INSERT INTO `getsingleposition` (`student_first_name`, `student_last_name`, `student_email`, `company_name`, `website_url`, `company_city`, `company_state`, `supervisor_first_name`, `supervisor_last_name`, `supervisor_email`, `supervisor_phone`, `position_id`, `position_title`, `term`, `year`, `is_paid`, `est_hours_per_week`) VALUES
+('Mark', 'Zappala', 'mzappala@email.com', 'Dyn Inc.', 'dyn.com', 'Manchester', 'NH', 'Smithson', 'Mr. Dyn', 'mrdyn@dyn.com', '6035565444', 1, 'Software Engineer Intern', 'Fall', '2013', '', '15'),
+('Joshua', 'Anderson', 'joshua.anderson@silvertech.com', 'SilverTech Inc.', 'silvertech.com', 'Manchester', 'NH', 'Smith', 'Jason', 'jsmith@email.com', '5644445566', 2, 'Web Design Intern', 'Fall', '2013', '', '15'),
+('Joe', 'Anderson', 'joe.anderson@email.com', 'Ektron', 'ektron.com', 'Nashua', 'NH', 'Smithson', 'Mr. Dyn', 'mrdyn@dyn.com', '6035565444', 3, 'Web Design Intern', 'Fall', '2013', '', '10');
 
 -- --------------------------------------------------------
 
@@ -63,12 +82,16 @@ CREATE TABLE IF NOT EXISTS `position` (
   KEY `fk_student_id` (`fk_student_id`),
   KEY `fk_company_id` (`fk_company_id`),
   KEY `fk_supervisor_id` (`fk_supervisor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `position`
 --
 
+INSERT INTO `position` (`position_id`, `position_title`, `term`, `year`, `fk_student_id`, `fk_company_id`, `fk_supervisor_id`, `is_paid`, `est_hours_per_week`) VALUES
+(1, 'Software Engineer Intern', 'Fall', '2013', 9, 3, 2, '', '15'),
+(2, 'Web Design Intern', 'Fall', '2013', 1, 1, 1, '', '15'),
+(3, 'Web Design Intern', 'Fall', '2013', 3, 2, 2, '', '10');
 
 -- --------------------------------------------------------
 
@@ -83,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `email` varchar(150) NOT NULL,
   PRIMARY KEY (`student_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `student`
@@ -92,7 +115,12 @@ CREATE TABLE IF NOT EXISTS `student` (
 INSERT INTO `student` (`student_id`, `last_name`, `first_name`, `email`) VALUES
 (1, 'Anderson', 'Joshua', 'joshua.anderson@silvertech.com'),
 (2, 'Zappala', 'Jessica', 'jnu45@wildcats.edu'),
-(3, 'Anderson', 'Joe', 'joe.anderson@email.com');
+(3, 'Anderson', 'Joe', 'joe.anderson@email.com'),
+(5, 'Brown', 'Jay', 'jsa@email.com'),
+(6, 'Test Last Name', 'Test Name', 'testemail@email.com'),
+(7, '"Test"', 'Joshua', 'joshua.a@silvertech.com'),
+(8, '"Test"', 'Another', 'anothertest@email.com'),
+(9, 'Zappala', 'Mark', 'mzappala@email.com');
 
 -- --------------------------------------------------------
 
@@ -110,12 +138,15 @@ CREATE TABLE IF NOT EXISTS `supervisor` (
   PRIMARY KEY (`supervisor_id`),
   UNIQUE KEY `last_name` (`last_name`,`first_name`,`email`,`fk_company_id`),
   KEY `fk_company_id` (`fk_company_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `supervisor`
 --
 
+INSERT INTO `supervisor` (`supervisor_id`, `last_name`, `first_name`, `email`, `phone`, `fk_company_id`) VALUES
+(1, 'Jason', 'Smith', 'jsmith@email.com', '5644445566', 2),
+(2, 'Mr. Dyn', 'Smithson', 'mrdyn@dyn.com', '6035565444', 3);
 
 --
 -- Constraints for dumped tables

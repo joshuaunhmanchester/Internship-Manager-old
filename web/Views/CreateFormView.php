@@ -2,54 +2,13 @@
 
     class CreateFormView 
     {
-        // This is used to build the main form to create a student profile
-        // think about making the form a class and use class based system to create the fields
-        static function buildForm() {
-        
-            $form = '
-                        <div class="create-form">
-                            <form method="POST">
-                                <fieldset>
-                                    <legend>Student Information</legend>
-                                    <div class="form-item">
-                                        <div class="label">
-                                            <label for="fname">First Name</label>
-                                        </div>
-                                        <div class="input">
-                                            <input type="text" id="fname" name="fname" value="'.$_POST['fname'].'"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-item">
-                                        <div class="label">
-                                            <label for="lname">Last Name</label>
-                                        </div>
-                                        <div class="input">
-                                            <input type="text" id="lname" name="lname" value="'.$_POST['lname'].'"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-item">
-                                        <div class="label">
-                                            <label for="email">UNH Email</label>
-                                        </div>
-                                        <div class="input">
-                                            <input type="text" id="email" name="email" value="'.$_POST['email'].'"/>
-                                        </div>
-                                    </div>
-                                    <input type="submit" id="submitButton" name="submitButton" value="Save" />
-                                </fieldset>
-                            </form>
-                        </div>';
-                        
-            return $form;
-        }
-    
         static function getStudentForm() {
             $s = '
                         <form method="POST">
                             <div class="form-wrapper student">
                                 <div class="label">Create New Position</div>
                                 <div class="form-wrapper-item">
-                                    <input type="hidden" id="selected-student-from-list" />
+                                    <input type="hidden" id="selected-student-from-list" name="selected-student-from-list" />
                                     <div class="label">1. Student Information</div>
                                     <div class="options">
                                         <span id="student-opts-search-student">Search</span>
@@ -106,7 +65,7 @@
         static function getCompanyForm() {
             $s = '
                                 <div class="form-wrapper-item">
-                                    <input type="hidden" id="selected-company-from-list" />
+                                    <input type="hidden" id="selected-company-from-list" name="selected-company-from-list" />
                                     <div class="label">2. Company Information</div>
                                     <div class="options">
                                         <span id="company-opts-search-company">Search</span>
@@ -133,7 +92,7 @@
                                                 <label for="cWebURL">Website</label>
                                             </div>
                                             <div class="input">
-                                                <input type="text" id="cWebURL" name="webURL" value="'.$_POST['cWebURL'].'"/>
+                                                <input type="text" id="cWebURL" name="cWebURL" value="'.$_POST['cWebURL'].'"/>
                                             </div>
                                         </div>
                                         <div class="form-item">
@@ -164,7 +123,7 @@
         static function getSupervisorForm() {
             $s = '
                                 <div class="form-wrapper-item">
-                                    <input type="hidden" id="selected-supervisor-from-list" />
+                                    <input type="hidden" id="selected-supervisor-from-list" name="selected-supervisor-from-list" />
                                     <div class="label">3. Supervisor Information</div>
                                     <div class="options">
                                         <span id="supervisor-opts-search-supervisor">Search</span>
@@ -234,6 +193,14 @@
                                         </div>
                                         <div class="form-item">
                                             <div class="input-label">
+                                                <label for="pTerm">Position Term</label>
+                                            </div>
+                                            <div class="input">
+                                                <input type="text" id="pTerm" name="pTerm" value="'.$_POST['pTerm'].'" />
+                                            </div>
+                                        </div>
+                                        <div class="form-item">
+                                            <div class="input-label">
                                                 <label for="pYear">Position Year</label>
                                             </div>
                                             <div class="input">
@@ -241,10 +208,13 @@
                                             </div>
                                         </div>
                                         <div class="form-item">
+                                            <div class="input-label">
+                                                <label>Is Paid</label>
+                                            </div>
                                             <div class="input">
-                                                <input type="radio" class="paidInfo" id="pIsPaidYes" name="pIsPaid" value="'.$_POST['pIsPaidYes'].'"/>
+                                                <input type="radio" class="paidInfo" id="pIsPaidYes" name="pIsPaid" value="1"/>
                                                 <label for="pIsPaidYes">Yes</label>
-                                                <input type="radio" class="paidInfo" id="pIsPaidNo" name="pIsPaid" value="'.$_POST['pIsPaidNo'].'"/>
+                                                <input type="radio" class="paidInfo" id="pIsPaidNo" name="pIsPaid" value="0"/>
                                                 <label for="pIsPaidNo">No</label>
                                             </div>
                                         </div>
@@ -257,7 +227,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="button" id="submitButton" name="submitButton" value="Submit" />
+                                    <input type="submit" id="submitButton" name="submitButton" value="Submit" />
                                 </div>
                             </div>                              
                         ';

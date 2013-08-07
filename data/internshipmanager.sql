@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 07, 2013 at 04:28 PM
+-- Generation Time: Aug 07, 2013 at 04:34 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -20,11 +20,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 -- --------------------------------------------------------
-
+CREATE DATABASE internshipmanager
 --
 -- Table structure for table `company`
 --
 
+DROP TABLE IF EXISTS `company`;
 CREATE TABLE IF NOT EXISTS `company` (
   `company_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -50,6 +51,7 @@ INSERT INTO `company` (`company_id`, `name`, `website_url`, `city`, `state`) VAL
 -- Table structure for table `getsingleposition`
 --
 
+DROP TABLE IF EXISTS `getsingleposition`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `internshipmanager`.`getsingleposition` AS select `s`.`first_name` AS `student_first_name`,`s`.`last_name` AS `student_last_name`,`s`.`email` AS `student_email`,`c`.`name` AS `company_name`,`c`.`website_url` AS `website_url`,`c`.`city` AS `company_city`,`c`.`state` AS `company_state`,`sv`.`first_name` AS `supervisor_first_name`,`sv`.`last_name` AS `supervisor_last_name`,`sv`.`email` AS `supervisor_email`,`sv`.`phone` AS `supervisor_phone`,`p`.`position_id` AS `position_id`,`p`.`position_title` AS `position_title`,`p`.`term` AS `term`,`p`.`year` AS `year`,`p`.`is_paid` AS `is_paid`,`p`.`est_hours_per_week` AS `est_hours_per_week` from (((`internshipmanager`.`position` `p` join `internshipmanager`.`student` `s` on((`p`.`fk_student_id` = `s`.`student_id`))) join `internshipmanager`.`company` `c` on((`p`.`fk_company_id` = `c`.`company_id`))) join `internshipmanager`.`supervisor` `sv` on((`p`.`fk_supervisor_id` = `sv`.`supervisor_id`)));
 
 --
@@ -67,6 +69,7 @@ INSERT INTO `getsingleposition` (`student_first_name`, `student_last_name`, `stu
 -- Table structure for table `position`
 --
 
+DROP TABLE IF EXISTS `position`;
 CREATE TABLE IF NOT EXISTS `position` (
   `position_id` int(11) NOT NULL AUTO_INCREMENT,
   `position_title` varchar(100) NOT NULL,
@@ -99,6 +102,7 @@ INSERT INTO `position` (`position_id`, `position_title`, `term`, `year`, `fk_stu
 -- Table structure for table `student`
 --
 
+DROP TABLE IF EXISTS `student`;
 CREATE TABLE IF NOT EXISTS `student` (
   `student_id` int(11) NOT NULL AUTO_INCREMENT,
   `last_name` varchar(100) NOT NULL,
@@ -128,6 +132,7 @@ INSERT INTO `student` (`student_id`, `last_name`, `first_name`, `email`) VALUES
 -- Table structure for table `supervisor`
 --
 
+DROP TABLE IF EXISTS `supervisor`;
 CREATE TABLE IF NOT EXISTS `supervisor` (
   `supervisor_id` int(11) NOT NULL AUTO_INCREMENT,
   `last_name` varchar(100) NOT NULL,

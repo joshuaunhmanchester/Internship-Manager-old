@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 07, 2013 at 04:34 PM
+-- Generation Time: Aug 07, 2013 at 04:54 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -20,13 +20,13 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 -- --------------------------------------------------------
-CREATE DATABASE internshipmanager
+
 --
 -- Table structure for table `company`
 --
 
 DROP TABLE IF EXISTS `company`;
-CREATE TABLE IF NOT EXISTS `company` (
+CREATE TABLE `company` (
   `company_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `website_url` varchar(100) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`company_id`, `name`, `website_url`, `city`, `state`) VALUES
+INSERT IGNORE INTO `company` (`company_id`, `name`, `website_url`, `city`, `state`) VALUES
 (1, 'SilverTech Inc.', 'silvertech.com', 'Manchester', 'NH'),
 (2, 'Ektron', 'ektron.com', 'Nashua', 'NH'),
 (3, 'Dyn Inc.', 'dyn.com', 'Manchester', 'NH');
@@ -58,7 +58,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Dumping data for table `getsingleposition`
 --
 
-INSERT INTO `getsingleposition` (`student_first_name`, `student_last_name`, `student_email`, `company_name`, `website_url`, `company_city`, `company_state`, `supervisor_first_name`, `supervisor_last_name`, `supervisor_email`, `supervisor_phone`, `position_id`, `position_title`, `term`, `year`, `is_paid`, `est_hours_per_week`) VALUES
+INSERT IGNORE INTO `getsingleposition` (`student_first_name`, `student_last_name`, `student_email`, `company_name`, `website_url`, `company_city`, `company_state`, `supervisor_first_name`, `supervisor_last_name`, `supervisor_email`, `supervisor_phone`, `position_id`, `position_title`, `term`, `year`, `is_paid`, `est_hours_per_week`) VALUES
 ('Mark', 'Zappala', 'mzappala@email.com', 'Dyn Inc.', 'dyn.com', 'Manchester', 'NH', 'Smithson', 'Mr. Dyn', 'mrdyn@dyn.com', '6035565444', 1, 'Software Engineer Intern', 'Fall', '2013', '', '15'),
 ('Joshua', 'Anderson', 'joshua.anderson@silvertech.com', 'SilverTech Inc.', 'silvertech.com', 'Manchester', 'NH', 'Smith', 'Jason', 'jsmith@email.com', '5644445566', 2, 'Web Design Intern', 'Fall', '2013', '', '15'),
 ('Joe', 'Anderson', 'joe.anderson@email.com', 'Ektron', 'ektron.com', 'Nashua', 'NH', 'Smithson', 'Mr. Dyn', 'mrdyn@dyn.com', '6035565444', 3, 'Web Design Intern', 'Fall', '2013', '', '10');
@@ -70,7 +70,7 @@ INSERT INTO `getsingleposition` (`student_first_name`, `student_last_name`, `stu
 --
 
 DROP TABLE IF EXISTS `position`;
-CREATE TABLE IF NOT EXISTS `position` (
+CREATE TABLE `position` (
   `position_id` int(11) NOT NULL AUTO_INCREMENT,
   `position_title` varchar(100) NOT NULL,
   `term` varchar(50) NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `position` (
 -- Dumping data for table `position`
 --
 
-INSERT INTO `position` (`position_id`, `position_title`, `term`, `year`, `fk_student_id`, `fk_company_id`, `fk_supervisor_id`, `is_paid`, `est_hours_per_week`) VALUES
+INSERT IGNORE INTO `position` (`position_id`, `position_title`, `term`, `year`, `fk_student_id`, `fk_company_id`, `fk_supervisor_id`, `is_paid`, `est_hours_per_week`) VALUES
 (1, 'Software Engineer Intern', 'Fall', '2013', 9, 3, 2, '', '15'),
 (2, 'Web Design Intern', 'Fall', '2013', 1, 1, 1, '', '15'),
 (3, 'Web Design Intern', 'Fall', '2013', 3, 2, 2, '', '10');
@@ -103,7 +103,7 @@ INSERT INTO `position` (`position_id`, `position_title`, `term`, `year`, `fk_stu
 --
 
 DROP TABLE IF EXISTS `student`;
-CREATE TABLE IF NOT EXISTS `student` (
+CREATE TABLE `student` (
   `student_id` int(11) NOT NULL AUTO_INCREMENT,
   `last_name` varchar(100) NOT NULL,
   `first_name` varchar(100) NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `last_name`, `first_name`, `email`) VALUES
+INSERT IGNORE INTO `student` (`student_id`, `last_name`, `first_name`, `email`) VALUES
 (1, 'Anderson', 'Joshua', 'joshua.anderson@silvertech.com'),
 (2, 'Zappala', 'Jessica', 'jnu45@wildcats.edu'),
 (3, 'Anderson', 'Joe', 'joe.anderson@email.com'),
@@ -133,7 +133,7 @@ INSERT INTO `student` (`student_id`, `last_name`, `first_name`, `email`) VALUES
 --
 
 DROP TABLE IF EXISTS `supervisor`;
-CREATE TABLE IF NOT EXISTS `supervisor` (
+CREATE TABLE `supervisor` (
   `supervisor_id` int(11) NOT NULL AUTO_INCREMENT,
   `last_name` varchar(100) NOT NULL,
   `first_name` varchar(100) NOT NULL,
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `supervisor` (
 -- Dumping data for table `supervisor`
 --
 
-INSERT INTO `supervisor` (`supervisor_id`, `last_name`, `first_name`, `email`, `phone`, `fk_company_id`) VALUES
+INSERT IGNORE INTO `supervisor` (`supervisor_id`, `last_name`, `first_name`, `email`, `phone`, `fk_company_id`) VALUES
 (1, 'Jason', 'Smith', 'jsmith@email.com', '5644445566', 2),
 (2, 'Mr. Dyn', 'Smithson', 'mrdyn@dyn.com', '6035565444', 3);
 

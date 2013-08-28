@@ -1,33 +1,124 @@
 body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Oxygen', sans-serif;   
+}
+
+.home-page-body {
+    background: #F3F3F3;
+}
+
+.inner-page-body {
+    background-color: #F2F2F2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-animation-name: fade-in;
+    -webkit-animation-duration: 1.5s;
+    line-height: 30px;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    color: #5c5c5c;
+}
+
+h1 {
     
 }
 
+h2 {
+    font-family:'Open Sans Condensed', sans-serif;
+    letter-spacing: .1em;
+    font-weight: 300;
+    font-size: 36px;
+    color: #212121;
+}
 
+#tagline {
+    border-bottom: 1px solid #cccccc;
+}
 
-h1 {
-    color: #ff6b6b;
-    /*color: #313437;*/
-    font-size: 40px;
-    font-weight: 400;
-    text-transform: uppercase;
+img {
+    width: 100%;
+}
+
+#container {
+    
+}
+
+#container #header {
+    background: #002c77;
+    margin-bottom: 30px;
+    height: 65px;
+}
+
+#container #header #logo {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+
+#container #header #compTech-logo {
+    position: absolute;
+    right: 5px;
+}
+
+#hp-content {
+    
+}
+
+.center {
     text-align: center;
 }
 
-h1:after {
-    background-color: #c1c7cd;
-    content: "";
-    display: block;
-    height: 1px;
-    margin: 25px auto 0 auto;
-    width: 200px;
+#icon-container {
+    width: 960px;
+    min-height: 250px;
+    padding: 10px;
+    color: #666;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 45px;
+    background: #fff;
+    border-top: 2px solid #740202 !important;
 }
 
-h2 {
-    color: #ff6b6b;
-    font-size: 1em;
+#icon-container .icon {
+    background-color: white;
+    box-shadow: 1px 1px 5px #CCCCCC;
+    float: left;
+    height: 250px;
+    width: 300px;
+    text-align: center;
 }
 
-/*MAIN CONTENTs*/
+#icon-container .middle {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.icon img {
+    width: auto;
+}
+
+.icon a {
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+.icon:hover {
+    opacity: .75;
+    cursor: pointer;
+}
+
+
+/*MAIN INNER CONTENTS*/
 #site {
     margin: 0;
     width: 100%;
@@ -52,7 +143,7 @@ h2 {
         margin-bottom: 30px;
     }
     
-#logo img {
+#logo img, #compTech-logo img {
     width: 250px;
 }
 

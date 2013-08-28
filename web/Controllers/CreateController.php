@@ -99,7 +99,7 @@
                
                if(!empty($studentID) && !empty($companyID) && !empty($supervisorID)) {
                    $createdPositionID = PositionModel::createPosition($pTitle, $pTerm, $pYear, $pIsPaid, $pEstHours, $studentID, $companyID, $supervisorID);  
-                   header('Location: /intern/view_position.php?id='.$createdPositionID');
+                   header('Location: /intern/view_position.php?id='.$createdPositionID);
                }
            } else {
                HomeHTMLView::showFormError($hasErrors);  

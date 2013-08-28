@@ -16,9 +16,7 @@
        // The main list of positions will be here as well
        static function main()
        {
-           echo HomeHTMLView::getTopHTML();
-           echo HomeHTMLView::welcome();
-           echo HomeHTMLView::getBottomHTML();
+           echo HomeHTMLView::getHomepageHTML();
        }
    }
 
